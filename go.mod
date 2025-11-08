@@ -1,4 +1,4 @@
-module DeliveryBot_mini
+module defaultBot
 
 go 1.25.0
 
