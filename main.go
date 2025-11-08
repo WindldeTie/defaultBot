@@ -1,7 +1,7 @@
 package main
 
 import (
-	"defaultBot/handler"
+	"DeliveryBot_mini/handler"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"github.com/joho/godotenv"
 	"log"
