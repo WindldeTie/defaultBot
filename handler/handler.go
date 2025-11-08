@@ -2,9 +2,6 @@ package handler
 
 import (
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
-	"log"
-	"os"
-	"strconv"
 	"strings"
 )
 
@@ -23,21 +20,16 @@ func (h *Handler) Start(debug bool) {
 	u.Timeout = 60
 	h.bot.Debug = debug
 	updates := h.bot.GetUpdatesChan(u)
-	admin, err := strconv.Atoi(os.Getenv("ADMIN_ID"))
-	if err != nil {
-		log.Println(err)
-	}
-	adminID := int64(admin)
 	go h.console()
 
 	for update := range updates {
-		h.HandleUpdate(update, adminID)
+		h.HandleUpdate(update)
 	}
 }
 
 // Обработка команд --------------------------------------------------------------------------------------------------
 
-func (h *Handler) HandleUpdate(update tgbotapi.Update, adminID int64) {
+func (h *Handler) HandleUpdate(update tgbotapi.Update) {
 	if update.Message != nil {
 		command := strings.TrimSpace(update.Message.Text)
 		msgArr := strings.Split(command, " ")
