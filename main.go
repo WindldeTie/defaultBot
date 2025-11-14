@@ -1,7 +1,7 @@
 package main
 
 import (
-	"DeliveryBot_mini/handler"
+	"defaultBot/handler"
 	tgbotapi "github.com/go-telegram-bot-api/telegram-bot-api/v5"
 	"github.com/joho/godotenv"
 	"log"
@@ -11,7 +11,6 @@ import (
 func main() {
 	godotenv.Load()
 	bot := initBot()
-	bot.Request(tgbotapi.DeleteWebhookConfig{DropPendingUpdates: true})
 
 	handler.NewHandler(bot).Start(false)
 }
